@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ozone-policy-analysis"
+version = "0.1.0"
+description = "Ozone and inversion data preparation with exploratory policy-analysis workflows"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "matplotlib>=3.8",
+  "numpy>=1.26",
+  "pandas>=2.2",
+  "lxml",
+]
+
+[project.optional-dependencies]
+analysis = ["scipy", "statsmodels", "rdrobust", "rddensity"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
