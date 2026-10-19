@@ -4,6 +4,22 @@ An exploratory environmental-economics workflow connecting pollution measurement
 
 The repository brings together data preparation, graphical diagnostics, and RD/DiD specifications. It contains code and input documentation; source datasets, unpublished reports, and saved effect estimates are not bundled.
 
+## Motivation and research questions
+
+Environmental policy raises two connected empirical questions: does a regulatory intervention change pollution, and what can variation in pollution tell us about health? Answering either requires more than comparing high- and low-pollution places. Those places can differ in industry, weather, population and many other characteristics that also affect outcomes.
+
+The first strand investigates whether counties on different sides of a historical ozone threshold show different subsequent pollution changes. Counties close to a cutoff may offer a more comparable local contrast than counties far apart in their initial pollution levels. The second strand assembles temperature-inversion measures with pollution, weather and health records so that the relationship between atmospheric conditions and measured exposure can be studied. These strands have distinct input structures and do not form one automatic causal pipeline.
+
+## How the methods fit the questions
+
+For the threshold strand, the preparation code converts monitor-day observations into county summaries, joins assignment-related fields, and creates pre/post outcome windows. Local regression-discontinuity comparisons focus on observations near the chosen cutoff. RD-in-changes examines whether the change in an outcome differs across it, while panel difference-in-differences and event-study specifications examine the time pattern of the comparison. Together, these tools help investigate whether a threshold-based design has useful empirical support.
+
+The key distinction is between a pollution measurement and a policy assignment variable. An annual arithmetic mean is useful for describing pollution, but it does not automatically reproduce the regulatory design value or the administrative assignment process. The code keeps these inputs explicit because a threshold comparison is only as meaningful as the variable and institutional rule it represents.
+
+For the inversion strand, the mechanism of interest is whether atmospheric temperature structure is associated with pollution accumulation. The code derives inversion indicators from soundings, matches monitors to nearby sounding stations, and joins observations to weather and health inputs. That produces data for examining a potential source of exposure variation. Establishing an instrumental-variable argument would require additional evidence that inversions predict the relevant pollution measure and affect health only through the allowed channels; the merge alone does not provide it.
+
+This project is therefore an exploration of measurement and identification as well as model fitting. Monitor coverage, geographic matching, unit conversions, historical exposure and the choice of outcome window all change what comparison an estimate represents. The repository documents those choices so readers can follow the route from raw records to a proposed policy comparison.
+
 ## Workflow
 
 | Component | Purpose |
